@@ -7,7 +7,7 @@ try:
         all_objects = ExtAPI.DataModel.Tree.AllObjects
         pressure_obj = None
         for obj in all_objects:
-            if obj.Name == 'Pressure':
+            if 'Pressure' in obj.Name:
                 pressure_obj = obj
             
         f.write(str(pressure_obj.Location.Ids.Count)+'\n')

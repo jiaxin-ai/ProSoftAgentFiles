@@ -8,7 +8,7 @@ try:
 
         support_obj = None
         for obj in all_objects:
-            if obj.Name == 'Fixed Support':
+            if 'Fixed Support' in obj.Name:
                 support_obj = obj
             
         f.write('Geometry: {} Face'.format(str(support_obj.Location.Ids.Count)))

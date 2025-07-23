@@ -8,7 +8,7 @@ try:
 
         total_deform_obj = None
         for obj in all_objects:
-            if obj.Name == 'Total Deformation':
+            if 'Total Deformation' in obj.Name:
                 total_deform_obj = obj
                 
         if total_deform_obj is not None:

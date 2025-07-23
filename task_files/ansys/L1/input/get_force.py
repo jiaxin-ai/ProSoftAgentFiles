@@ -8,7 +8,7 @@ try:
 
         force_obj = None
         for obj in all_objects:
-            if obj.Name == 'Force':
+            if 'Force' in obj.Name:
                 force_obj = obj
         
         f.write('Geometry: {} Face\n'.format(str(force_obj.Location.Ids.Count)))
