@@ -1,0 +1,5 @@
+ A B C D
+A NA NA NA NA
+B 0 NA NA NA
+C 0 0 NA NA
+D 0 1e-04 0.0265 NA
