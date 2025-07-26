@@ -1,0 +1,11 @@
+"Name" "Age" "Sex" "Height" "Weight"
+"1" "XiaoMing" 15 "M" 167 70
+"2" "XiaoMei" 16 "F" 160 52.6
+"3" "XiaoChen" 16 "F" 167 60.1
+"4" "LiHua" 17 "M" 173 68
+"5" "Jackson" 18 "M" 180 79.9
+"6" "Peter" 17 "M" 175 76.3
+"7" "Louis" 18 "F" 156 50.4
+"8" "Megie" 15 "F" 165 56
+"9" "Chris" 17 "F" 170 74.8
+"10" "Stewie" 18 "M" 188 85
