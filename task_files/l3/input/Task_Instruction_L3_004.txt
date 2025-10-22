@@ -1,0 +1,74 @@
+TASK NAME: RGB Channel Split and Concatenation for Panel Visualization (ImageJ + Adobe Photoshop)
+
+TASK OVERVIEW:
+This task involves splitting the RGB channels of the image "ImageJ_L3.jpg" in ImageJ, export each channel as JPEGs, then concatenate the four images (original, red, green, blue) side-by-side in Photoshop into a single horizontal panel.
+All steps must be followed strictly according to the **TASK FLOW**, ensuring consistency in file paths, formats, and requirements.
+
+REQUIREMENTS:
+- The initial image file is "ImageJ_L3.jpg", which is already opened in ImageJ.
+- ImageJ and Photoshop are already open. You don't need to start new instances. Complete Phase 1 in ImageJ; when Phase 2 begins, switch to the existing Photoshop window (Alt+Tab or taskbar) and continue there.
+- When concatenating the images in Photoshop:
+  - Do NOT alter image dimensions or scaling.
+  - Do NOT leave any gaps between the images.
+  - Final order must be: Original (left), then Red, Green, Blue (right).
+- All result files must be saved in the specified locations.
+
+OUTPUTS TO PRODUCE:
+1) C:/Users/Docker/Downloads/Red.jpg
+2) C:/Users/Docker/Downloads/Green.jpg
+3) C:/Users/Docker/Downloads/Blue.jpg
+4) C:/Users/Docker/Downloads/RGB_Panel.jpg
+
+––––––––––––––––––––––––––––––––––––––––
+**TASK FLOW:**
+––––––––––––––––––––––––––––––––––––––––
+PHASE 1 — ImageJ (RGB Channel Split and Export)
+
+Goal: Split "ImageJ_L3.jpg" into R/G/B channels in ImageJ and save each channel as a separate JPEG to the specified paths.
+
+Steps:
+1.1 In ImageJ, go to "Image > Color > Split Channels" to split the image "ImageJ_L3.jpg" into R/G/B channels.
+1.2 Use "File > Save As > Jpeg..." to save each channel image as JPEG files at the following locations:
+    - Save the Red channel image as JPEG at "C:/Users/Docker/Downloads/Red.jpg".
+    - Save the Green channel image as JPEG at "C:/Users/Docker/Downloads/Green.jpg".
+    - Save the Blue channel image as JPEG at "C:/Users/Docker/Downloads/Blue.jpg".
+
+Phase 1 completion condition: Three channel image files are saved successfully at the specified locations.
+
+––––––––––––––––––––––––––––––––––––––––
+PHASE 2 — Photoshop (Concatenate Images into a Panel)
+
+Goal: Concatenate the four images (original "ImageJ_L3.jpg", "Red.jpg", "Green.jpg", "Blue.jpg") into a single horizontal panel with no gaps or scaling, then export the panel image to "C:/Users/Docker/Downloads/RGB_Panel.jpg".
+
+Steps:
+2.1 Switch to Photoshop, create a new document with:
+    **Width = 1000 px, Height = 250 px, Background = White, Resolution = 300 ppi, RGB/8-bit**.
+2.2 Place the original image:
+    (a) Go to "File > Place Embedded..." to import original image file from "C:/Users/Docker/Downloads/ImageJ_L3.jpg", and click "Done".
+    (b) In Properties panel, set X = 0 px, Y = 0 px
+2.3 Place the Red channel image:
+    (a) Go to "File > Place Embedded..." to import red channel image file from "C:/Users/Docker/Downloads/Red.jpg", and click "Done".
+    (b) Set X = 250 px, Y = 0 px
+2.4 Place the Green channel image:
+    (a) Go to "File > Place Embedded..." to import green channel image file from "C:/Users/Docker/Downloads/Green.jpg", and click "Done".
+    (b) Set X = 500 px, Y = 0 px
+2.5 Place the Blue channel image:
+    (a) Go to "File > Place Embedded..." to import blue channel image file from "C:/Users/Docker/Downloads/Blue.jpg", and click "Done".
+    (b) Set X = 750 px, Y = 0 px
+2.6 Export the panel image:
+    (a) Go to "File > Export > Export As..."
+    (b) Format = JPG, Quality = 6, other options default
+    (c) Export to: "C:/Users/Docker/Downloads/RGB_Panel.jpg".
+
+Phase 2 completion condition:
+"C:/Users/Docker/Downloads/RGB_Panel.jpg" exists and shows four tiles in order (Original, Red, Green, Blue) with no scaling and no gaps on a 1000×250 px canvas.
+
+––––––––––––––––––––––––––––––––––––––––
+SCORING:
+- 1.0 if Phase 2 output is correct (C:/Users/Docker/Downloads/RGB_Panel.jpg).
+- 0.5 if Phase 2 is incorrect but Phase 1 outputs are correct (C:/Users/Docker/Downloads/Red.jpg, C:/Users/Docker/Downloads/Green.jpg, C:/Users/Docker/Downloads/Blue.jpg).
+- 0.0 if both Phase 1 and Phase 2 fail.
+
+"Correct" means: Files exist at the exact paths with the required content.
+
+Final Reminder: Do NOT modify the original image and the generated channel images in any way — do NOT resize, crop, rotate, or adjust brightness/contrast at any stage.
