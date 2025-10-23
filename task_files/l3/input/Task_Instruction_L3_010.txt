@@ -1,0 +1,53 @@
+TASK NAME: SVG Motif Design and PSD Layer Setup (Illustrator + Photoshop)
+
+TASK OVERVIEW:
+This task has two phases. First, design a motif in Adobe Illustrator using basic shapes (triangles and squares), and save as an SVG. Second, open the SVG in Adobe Photoshop, add a text layer and a gradient fill layer with the specified names and settings, and save as a PSD.
+All steps must be followed strictly according to the **TASK FLOW** to ensure a unique, reproducible result.
+
+REQUIREMENTS:
+- Adobe Illustrator (current active window) and Adobe Photoshop are already open. You don't need to start new instances.
+  Complete Phase 1 in Illustrator; then switch to the existing Photoshop window (via Alt+Tab or the taskbar) for Phase 2.
+- Save outputs to the exact paths specified below.
+
+OUTPUTS TO PRODUCE:
+1) C:/Users/Docker/Downloads/AI_L3.svg
+2) C:/Users/Docker/Downloads/AI_L3.psd
+
+––––––––––––––––––––––––––––––––––––––––
+TASK FLOW
+––––––––––––––––––––––––––––––––––––––––
+PHASE 1 — Illustrator (Design and Export SVG)
+
+Goal: In the currently open Illustrator document (C:/Users/Docker/Downloads/AI_L3.svg), design a motif using basic shapes (triangles and squares), then save as SVG.
+
+Steps:
+1.1 In the currently open Illustrator document (AI_L3.svg), design a motif using only two basic shape types:
+    - Use Polygon Tool with Sides = 3 to draw triangles.
+    - Use Rectangle Tool and set width = height to draw squares.
+1.2 Ensure the motif contains at least one square and at least one triangle. Keep shapes fully within the artboard.
+1.3 Save the SVG:
+    - File > Save (overwrite the same file at C:/Users/Docker/Downloads/AI_L3.svg).
+    - If an options dialog appears, keep Illustrator’s default SVG settings (NO changes).
+
+Phase 1 completion condition:
+"C:/Users/Docker/Downloads/AI_L3.svg" exists and contains the designed motif with at least one square and one triangle.
+
+––––––––––––––––––––––––––––––––––––––––
+PHASE 2 — Photoshop (Open SVG, Add Layers, Save PSD)
+
+Goal: Open the SVG from Phase 1, add a text layer named "test_text" with content "Text" and a gradient fill layer named "test_fill" with layer opacity set to 0%, then save as PSD at "C:/Users/Docker/Downloads/AI_L3.psd".
+
+Steps:
+2.1 Switch to Photoshop. Open the SVG file at "C:/Users/Docker/Downloads/AI_L3.svg".
+2.2 Create a new layer named "Text," add the text "Text" to it.
+2.3 Create a Gradient Fill layer named "test_fill," and set its opacity to exactly 0.
+2.4 Save the layered document as PSD:
+    - File > Save As...
+    - Path: C:/Users/Docker/Downloads/AI_L3.psd
+
+Phase 2 completion condition:
+"C:/Users/Docker/Downloads/AI_L3.psd" is saved successfully with the required layers and contents.
+
+––––––––––––––––––––––––––––––––––––––––
+Strictly follow the TASK FLOW. Complete Phase 1 first, then Phase 2, in order.
+Each phase counts 0.5 points (maximum 1.0).
