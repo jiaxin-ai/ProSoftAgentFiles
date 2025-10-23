@@ -1,0 +1,65 @@
+TASK NAME: Air Quality Data Cleaning and Statistical Summary Analysis (Excel + RGui)
+
+TASK OVERVIEW:
+This task requires cleaning a worksheet in Excel and then producing a statistical summary in RGui.
+All steps must be followed strictly according to the **TASK FLOW**, ensuring consistency in file paths, column names, numeric precisions, and requirements.
+
+REQUIREMENTS:
+- The initial data file is "Excel_L3.xlsx", which is already opened in Excel.
+- Excel and RGui are already open. You don't need to start new instances. Complete Phase 1 in Excel; when Phase 2 begins, switch to the existing RGui window (Alt+Tab or taskbar) and continue there.
+- All outputs must be saved exactly in the specified file paths.
+
+OUTPUTS TO PRODUCE:
+1) C:/Users/Docker/Downloads/clean_air.csv
+2) C:/Users/Docker/Downloads/summary_air.csv
+
+––––––––––––––––––––––––––––––––––––––––
+**TASK FLOW:**
+––––––––––––––––––––––––––––––––––––––––
+PHASE 1 — Excel (Data Cleaning)
+
+Goal: In the opened worksheet "Excel_L3.xlsx", rename columns, remove rows with missing values, round specified numeric columns to one decimal place, and save the processed sheet as a CSV to the exact path "C:/Users/Docker/Downloads/clean_air.csv".
+
+Steps:
+1.1 In "Excel_L3.xlsx", change the column headers B1, C1 and D1 exactly as follows:
+     - Rename "pm25_value" to "pm25"
+     - Rename "temp_value" to "temp"
+     - Rename "humidity_value" to "humidity"
+1.2 Delete all rows that contain any missing (blank) cells.
+1.3 Round the values in columns B (pm25) and C (temp) to 1 decimal place (standard rounding).
+    - Hint: Select cells, right-click, click "Format Cells...", select "Number", and set Decimal places = 1.
+1.4 Save the modified worksheet as a CSV (comma-delimited) file at the exact path: "C:/Users/Docker/Downloads/clean_air.csv" (Use "File > Save As...")
+    - File > Save As...
+    - Navigate to directory: C:/Users/Docker/Downloads
+    - Save as type: CSV UTF-8 (Comma delimited) (*.csv)
+    - File name: clearn_air.csv
+
+Phase 1 completion condition:
+The file "C:/Users/Docker/Downloads/clean_air.csv" exists, with headers `pm25, temp, humidity`, all rows valid (no missing values), and correct numeric format (1 decimal place for columns pm25 and temp).
+
+––––––––––––––––––––––––––––––––––––––––
+PHASE 2 — RGui (Statistical Summary Analysis)
+
+Steps: In RGui, write and execute a section of R code that reads the cleaned CSV from Phase 1, computes the mean and standard deviation for each variable, and exports the summary table to: "C:/Users/Docker/Downloads/summary_air.csv".
+
+Instructions for the R code (perform these actions in order):
+2.1 Read data from: "C:/Users/Docker/Downloads/clean_air.csv" (Treat the first row as headers; read numeric columns as numbers.)
+2.2 For each variable "pm25", "temp", and "humidity", compute:
+    - Mean
+    - Standard deviation
+2.3 Build a data frame with columns exactly: "variable", "mean", "sd"
+    - The "variable" column lists names in this exact order: pm25, temp, humidity.
+    - Round the "mean" and "sd" values to **2** decimal places using R’s default rounding rules.
+2.4 Write the resulting table to: "C:/Users/Docker/Downloads/summary_air.csv":
+    - Delimiter: comma.
+    - Include the header row exactly `variable,mean,sd`.
+    - No row names.
+    - No quotes around data values.
+    - Encoding: UTF-8.
+
+Phase 2 completion condition:
+The file "C:/Users/Docker/Downloads/summary_air.csv" exists and contains required columns, rows and correct values.
+
+––––––––––––––––––––––––––––––––––––––––
+Strictly follow the TASK FLOW. Complete Phase 1 first, then Phase 2, in order.
+Each phase counts 0.5 points (maximum 1.0).

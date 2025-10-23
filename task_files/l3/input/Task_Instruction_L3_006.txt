@@ -1,0 +1,119 @@
+TASK NAME: Kidney Tissue Intensity Analysis and Reporting (ImageJ, RGui, Excel)
+
+TASK OVERVIEW:
+This task quantifies signal intensity from three kidney tissue images (Human, Mouse, Zebrafish) using ImageJ, derives species-level indices in R, and consolidates results in Excel.
+All steps must be followed strictly according to the **TASK FLOW**, ensuring consistency in file paths, column names, sheet layouts, and requirements.
+
+REQUIREMENTS:
+- Source images exist at the paths:
+  - C:/Users/Docker/Downloads/human_kidney_tissue.jpg
+  - C:/Users/Docker/Downloads/mouse_kidney_tissue.jpg
+  - C:/Users/Docker/Downloads/zebrafish_kidney_tissue.jpg
+- ImageJ, RGui and Excel are already open. You don't need to start new instances.
+  Complete Phase 1 in ImageJ; switch to the existing RGui window (via Alt+Tab or the taskbar) for Phase 2, and switch to the Excel window for Phase 3.
+- All results and output files must be saved in the specified locations.
+
+OUTPUTS TO PRODUCE:
+1) C:/Users/Docker/Downloads/Results.csv
+2) C:/Users/Docker/Downloads/Indices.csv
+3) C:/Users/Docker/Downloads/Processed_Results.xlsx
+
+––––––––––––––––––––––––––––––––––––––––
+**TASK FLOW:**
+––––––––––––––––––––––––––––––––––––––––
+PHASE 1 — ImageJ (Measure Kidney Tissue Images)
+
+Goal: For each kidney tissue image (human, mouse, zebrafish), measure required metrics into the Results table, then export to "C:/Users/Docker/Downloads/Results.csv".
+
+Steps:
+1.1 In ImageJ, go to "Analyze > Clear Results" to start with an empty Results table.
+
+1.2 Navigate to "Analyze > Set Measurements", and enable the following options:
+    - Area
+    - Mean gray value
+    - Min & max gray value
+    - Integrated density
+    - Display label
+    Click "OK".
+
+1.3 Measure each image once, in the exact order below. For each image, perform all sub-steps (a)–(b) before proceeding to the next image:
+    Order:
+      - C:/Users/Docker/Downloads/human_kidney_tissue.jpg
+      - C:/Users/Docker/Downloads/mouse_kidney_tissue.jpg
+      - C:/Users/Docker/Downloads/zebrafish_kidney_tissue.jpg
+    For each image:
+      (a) Open the file using "File > Open".
+      (b) Run "Analyze > Measure". This appends exactly one new row to the Results table.
+    After processing all three images, the Results window must contain exactly 3 data rows (one per image, in the order above).
+
+1.4 Export the Results table:
+    - In the "Results" window, go to "File > Save As..." and save to: "C:/Users/Docker/Downloads/Results.csv"
+
+Phase 1 completion condition:
+The file "C:/Users/Docker/Downloads/Results.csv" exists with three data rows corresponding to the three images (in order: human, mouse, zebrafish) and includes the required columns (Label, Area, Mean, Min, Max, IntDen).
+
+––––––––––––––––––––––––––––––––––––––––
+PHASE 2 — RGui (Compute Species-Level Indices)
+
+Goal: In RGui, write and execute an R script that reads the Phase 1 CSV, computes specified indices, and writes a new CSV to "C:/Users/Docker/Downloads/Indices.csv".
+Do not hardcode numeric values; compute them from the input.
+
+Steps: In RGui, write and execute an R script that performs these actions in order:
+2.1 Read data from: "C:/Users/Docker/Downloads/Results.csv"
+    - Treat the first row as headers.
+    - Read numeric columns as numbers.
+
+2.2 Create a new column "Species" from the "Label" filename:
+    - If Label contains "human_kidney_tissue", set Species = "Human"
+    - If Label contains "mouse_kidney_tissue", set Species = "Mouse"
+    - If Label contains "zebrafish_kidney_tissue", set Species = "Zebrafish"
+    - Ensure there is exactly one row per species.
+
+2.3 For each row (one per species), compute the following indices using Phase 1 columns:
+    - Norm_IntDen       = IntDen / Area
+    - Dynamic_Range     = Max - Min
+    - Contrast_Index    = (Max - Min) / Mean        (if Mean == 0, set Contrast_Index = NA)
+    - Brightness_Index  = Mean
+
+2.4 Construct a data frame with columns in this exact order and names:
+    Species, Norm_IntDen, Dynamic_Range, Contrast_Index, Brightness_Index
+    - Order the rows exactly as: Human, Mouse, Zebrafish.
+
+2.5 Write the table to: "C:/Users/Docker/Downloads/Indices.csv"
+    - Use a comma as the delimiter.
+    - Include the header row exactly as in step 2.4.
+    - Do not include row names.
+    - Do not include quotes around data values.
+    - Use UTF-8 encoding.
+
+Phase 2 completion condition:
+The file "C:/Users/Docker/Downloads/Indices.csv" exists and contains 3 rows (Human, Mouse, Zebrafish in that order) with the required columns and computed values as defined.
+
+––––––––––––––––––––––––––––––––––––––––
+PHASE 3 — Excel (Consolidation and Summary)
+
+Goal: Consolidate Phase 1 and Phase 2 data into a single workbook and add a Summary sheet.
+
+Steps:
+3.1 Open Excel and create a blank workbook. Save as "C:/Users/Docker/Downloads/Processed_Results.xlsx".
+3.2 Go to "Data > From Text/CSV", and import the file from "C:/Users/Docker/Downloads/Results.csv". This creates a sheet named "Results".
+3.3 Go to "Data > From Text/CSV", and import the file from "C:/Users/Docker/Downloads/Indices.csv". This creates a sheet named "Indices".
+3.4 Create a new sheet named "Summary":
+    - Enter Row 1 headers (exact text):
+      A1 = "Species", B1 = "Norm_IntDen", C1 = "Contrast_Index", D1 = "Brightness_Index"
+    - Enter Rows 2–4 species labels (exact text and order):
+      A2 = "Human", A3 = "Mouse", A4 = "Zebrafish"
+    - Fill cells B2:D4 by looking up the corresponding values from sheet "Indices".
+    - Add the AVERAGE row at row 5:
+        - In A5, enter "AVG".
+        - In B5, enter: "=AVERAGE(B2:B4)"
+        - In C5, enter: "=AVERAGE(C2:C4)"
+        - In D5, enter: "=AVERAGE(D2:D4)"
+3.6 Save the workbook to the exact path: "C:/Users/Docker/Downloads/Processed_Results.xlsx"
+
+Phase 3 completion condition:
+The file "C:/Users/Docker/Downloads/Processed_Results.xlsx" is created successfully with the required contents (Sheet "Results", "Indices" and "Summary").
+
+––––––––––––––––––––––––––––––––––––––––
+Strictly follow the TASK FLOW. Complete Phase 1 first, then Phase 2, then Phase 3, in order.
+Phase 1 and Phase 2 each count 0.3 points; Phase 3 counts 0.4 points (maximum 1.0).

@@ -1,0 +1,79 @@
+TASK NAME: Street-Level Population Aggregation & Percentage Analysis (ArcGIS + Excel)
+
+TASK OVERVIEW:
+Perform spatial aggregation of residential points by street in ArcGIS to compute the total population per street, export the result as a text table, then clean and compute population percentages in Excel.
+All steps must be followed strictly according to the **TASK FLOW**, ensuring consistency in file paths, formats, and requirements.
+
+REQUIREMENTS:
+- Use the currently opened map: "ArcGIS_L3.mxd" (ArcMap).
+- Field names are literal: "people" (population), "街道" (street).
+- Do not change any parameter not explicitly stated.
+- File names and paths must match exactly.
+
+OUTPUTS TO PRODUCE:
+1) C:\Users\Docker\Downloads\summary.txt
+2) C:\Users\Docker\Downloads\population.xlsx
+
+––––––––––––––––––––––––––––––––––––––––
+**TASK FLOW:**
+––––––––––––––––––––––––––––––––––––––––
+PHASE 1 — ArcGIS (Aggregate by street and export)
+
+Goal: In the currently opened map "ArcGIS_L3.mxd", calculate the total population (field "people") for each street (field "街道") and export the result to "C:\Users\Docker\Downloads\summary.txt".
+
+Steps:
+1.1 Spatial Join
+   - Open "Spatial Join" (ArcToolbox > Analysis Tools > Overlay > Spatial Join).
+   - Set:
+     Target Features = Street
+     Join Features   = Residential Point
+     Output Feature Class as default (do not change)
+     Join Operation  = JOIN_ONE_TO_ONE
+     Match Option    = INTERSECT
+     Check "Keep all target features".
+   - Run and wait until completion (a spatial-join layer appears in the Table of Contents).
+
+1.2 Summary Statistics
+   - Open "Summary Statistics" (ArcToolbox > Analysis Tools > Statistics > Summary Statistics).
+   - Set:
+     Input Table        = the spatial-join result from Step 1.1
+     Statistics Field(s)= "people" with statistic type "SUM"
+     Case field(s)      = "街道"
+     Output Table       = C:\Users\Docker\Downloads\summary.dbf
+   - Run and wait until completion (a table named "summary" appears in the Table of Contents).
+
+1.3 Export Table as Text
+   - In the Table of Contents, right-click the "summary" table → Data > Export...
+   - Save as type = "Text File"
+   - Output path = "C:\Users\Docker\Downloads\summary.txt" (exact path)
+   - Save.
+
+Phase 1 is completed when the file "C:\Users\Docker\Downloads\summary.txt" is successfully exported.
+
+––––––––––––––––––––––––––––––––––––––––
+PHASE 2 — Excel (Import, clean, compute percentages and sum, save)
+
+Goal: Import "C:\Users\Docker\Downloads\summary.txt" into Excel, clean columns, compute total population and per-street percentage, and save the processed result to the exact path "C:\Users\Docker\Downloads\population.xlsx".
+
+Steps:
+2.1 Open Excel, create a blank workbook, and import "C:\Users\Docker\Downloads\summary.txt" via "Data > From Text/CSV".
+2.2 Delete columns "OID_" and "FREQUENCY", leaving only:
+   - Column A = "街道"
+   - Column B = "SUM_people"
+2.3 Rename "SUM_people" to "Total_Population" (keep it in column B).
+2.4 Add Column C with header "Population_Percent".
+2.5 Add a totals row on Row 5, set:
+   - A5 = "SUM"
+   - B5 = "=SUM(B2:B4)"(total population)
+6) Compute per-street percentage (format as Percentage with 2 decimals):
+   - C2 = "=B2/$B$5"
+   - C3 = "=B3/$B$5"
+   - C4 = "=B4/$B$5"
+   - C5 = "=SUM(C2:C4)" (should equal 1 or 100%)
+7) Save the final workbook as the exact path "C:\Users\Docker\Downloads\population.xlsx".
+
+Phase 2 is completed when the file "C:\Users\Docker\Downloads\population.xlsx" is successfully saved.
+
+––––––––––––––––––––––––––––––––––––––––
+Strictly follow the TASK FLOW. Complete Phase 1 first, then Phase 2, in order.
+Each phase counts 0.5 points (maximum 1.0).

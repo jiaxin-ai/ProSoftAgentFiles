@@ -1,0 +1,79 @@
+TASK NAME: Dot_Blot Signal Integrated Density Measurement & Normalization (ImageJ + Excel)
+
+TASK OVERVIEW:
+This task involves quantitative analysis of signal points in the "Dot_Blot.tif" image, specifically measuring the Integrated Density (IntDen) to evaluate the relative intensity of different signal points.
+The task is divided into two phases: first, use ImageJ to acquire the Integrated Density data for each signal point, then use Excel to perform normalization and calculate the average summary for the measurements.
+All steps must be followed strictly according to the **TASK FLOW**, ensuring consistency in file paths, formats, and requirements.
+
+REQUIREMENTS:
+- The initial file is the image "Dot_Blot.tif", which is already opened in ImageJ.
+- All results and output files must be saved in the specified locations.
+
+OUTPUTS TO PRODUCE:
+1) C:/Users/Docker/Downloads/Results.csv
+2) C:/Users/Docker/Downloads/Processed_Results.xlsx
+
+––––––––––––––––––––––––––––––––––––––––
+**TASK FLOW:**
+––––––––––––––––––––––––––––––––––––––––
+PHASE 1 — ImageJ (Signal Measurement)
+
+Goal: Measure the Integrated Density for four signal points in the "Dot_Blot.tif" image using ImageJ, and export the data to "C:/Users/Docker/Downloads/Results.csv".
+
+Steps:
+1.1 In ImageJ, navigate to "Analyze > Set Measurements", and enable the following options:
+    - Area
+    - Mean gray value
+    - Min & max gray value
+    - Integrated density
+   Click "OK".
+1.2 Use the "Oval Selection Tool" to select the first four signal points in the image (from top to bottom) along the first column.
+    For each signal point, go to "Analyze > Measure" to measure the signal. Each measurement will generate a new row of data in the ImageJ "Results" window.
+    After measuring all four points, ensure that the Results window contains 4 rows of data (numbered 1 to 4).
+1.3 In the "Results" window, go to "File > Save As... > Results..." and save the data to the exact path: "C:/Users/Docker/Downloads/Results.csv"
+    The file should include 4 rows of data and the following columns:
+    - Area
+    - Mean
+    - Min
+    - Max
+    - IntDen
+    - RawIntDen
+
+Phase 1 completion condition:
+The file "C:/Users/Docker/Downloads/Results.csv" is created successfully with the correct column names and 4 rows of data.
+
+––––––––––––––––––––––––––––––––––––––––
+PHASE 2 — Excel (Normalization and Summary Calculation)
+
+Goal: Import the results from ImageJ into Excel, normalize the Integrated Density values, and compute the average values for each measurement.
+
+Steps:
+2.1 Open Excel, create a blank workbook. Go to "Data > From Text/CSV", and import the file from "C:/Users/Docker/Downloads/Results.csv".
+    Ensure that the imported file shows the following columns:
+    - Area
+    - Mean
+    - Min
+    - Max
+    - IntDen
+    - RawIntDen
+2.2 Add a new column (Column H) and set the header H1 to "Norm_IntDen".
+2.3 In cell H2, enter the formula "=F2/AVERAGE(F$2:F$5)" (F column contains the IntDen values). Then, drag down the formula from H2 to H5 to calculate the normalized Integrated Density for all four signal points.
+2.4 Add another column (Column I) and set the header I1 to "Norm_IntDen_Rounded".
+2.5 In cell I2, enter the formula: "=ROUND(H2,3)". Then drag down the formula from I2 to I5 to round the normalized values to three decimal places.
+2.6 In row 6, add the average summary for each column:
+    - In cell A6, enter "AVG".
+    - In cells B6, C6, D6, E6, H6, and I6, enter the following formulas:
+      - =AVERAGE(B2:B5)
+      - =AVERAGE(C2:C5)
+      - =AVERAGE(D2:D5)
+      - =AVERAGE(E2:E5)
+      - =AVERAGE(H2:H5)
+      - =AVERAGE(I2:I5)
+2.7 Finally, save the workbook to the exact path "C:/Users/Docker/Downloads/Processed_Results.xlsx"
+
+Phase 2 completion condition:
+The file "C:/Users/Docker/Downloads/Processed_Results.xlsx" is created successfully with the normalized values, rounded values, and the average summary row.
+
+––––––––––––––––––––––––––––––––––––––––
+Strictly follow the TASK FLOW. Complete Phase 1 first, then Phase 2, in order.
+Each phase counts 0.5 points (maximum 1.0).
