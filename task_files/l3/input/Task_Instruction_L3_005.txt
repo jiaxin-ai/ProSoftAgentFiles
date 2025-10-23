@@ -32,7 +32,7 @@ Steps:
     - File > Save As...
     - Navigate to directory: C:/Users/Docker/Downloads
     - Save as type: CSV UTF-8 (Comma delimited) (*.csv)
-    - File name: clearn_air.csv
+    - File name: clean_air.csv
 
 Phase 1 completion condition:
 The file "C:/Users/Docker/Downloads/clean_air.csv" exists, with headers `pm25, temp, humidity`, all rows valid (no missing values), and correct numeric format (1 decimal place for columns pm25 and temp).

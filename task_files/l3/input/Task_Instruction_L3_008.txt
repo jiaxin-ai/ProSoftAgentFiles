@@ -1,0 +1,50 @@
+TASK NAME: Fischer Esterification Reaction Diagram and Annotation (ChemDraw + Photoshop)
+
+TASK OVERVIEW:
+This tasks involves two phases: first, use ChemDraw to draw the reaction of acetic acid with ethanol forming ethyl acetate and water, saves the scheme as CDXML and JPEG files. Second, open the JPEG in Photoshop, add a new layer named "anno" containing text: "reaction between acetic acid and ethanol forming water and ethyl acetate" and save the PSD file.
+All steps must be followed strictly according to the **TASK FLOW** to ensure a unique, reproducible result.
+
+REQUIREMENTS:
+- ChemDraw (current active window) and Photoshop are already open. You don't need to start new instances. Complete Phase 1 in ChemDraw; when Phase 2 begins, switch to the existing Photoshop window (Alt+Tab or taskbar) and continue there.
+- Save outputs to the exact paths specified below.
+
+OUTPUTS TO PRODUCE:
+1) C:/Users/Docker/Downloads/reaction.cdxml
+2) C:/Users/Docker/Downloads/reaction.jpg
+3) C:/Users/Docker/Downloads/reaction.psd
+
+––––––––––––––––––––––––––––––––––––––––
+**TASK FLOW:**
+––––––––––––––––––––––––––––––––––––––––
+PHASE 1 — ChemDraw (Draw Reaction and Export CDXML/JPEG)
+
+Goal: Draw the reaction "acetic acid + ethanol -> ethyl acetate + water" in ChemDraw, save as CDXML and JPEG at the exact paths below.
+
+Steps:
+1.1 In the currently open ChemDraw document, draw the reaction "acetic acid + ethanol -> ethyl acetate + water" on a single horizontal line with a left-to-right reaction arrow and plus signs between reactants and products. Ensure each structure is clearly recognizable and not overlapping.
+1.2 Save the ChemDraw file:
+    - File > Save As
+    - Path: C:/Users/Docker/Downloads/reaction.cdxml
+1.3 Save as JPEG image of the page:
+    - File > Save As, choose JPEG.
+    - Path: C:/Users/Docker/Downloads/reaction.jpg
+
+Phase 1 completion condition: Both CDXML and JPEG files exist at the exact paths and depict the reaction "acetic acid + ethanol -> ethyl acetate + water" as described.
+
+––––––––––––––––––––––––––––––––––––––––
+PHASE 2 — Photoshop (Add Annotation Layer and Save PSD)
+
+Goal: Open the Phase 1 JPEG in Photoshop, add a new layer named "anno", add the text "reaction between acetic acid and ethanol forming water and ethyl acetate" to it, and save the PSD file at "C:/Users/Docker/Downloads/reaction.psd".
+
+Steps:
+2.1 Switch to Photoshop. Open the image file at "C:/Users/Docker/Downloads/reaction.jpg".
+2.2 Create a new layer:
+    - Insert the exact text on this layer: "reaction between acetic acid and ethanol forming water and ethyl acetate".
+    - Rename this layer to "anno".
+2.3 Save the file as PSD at "C:/Users/Docker/Downloads/reaction.psd".
+
+Phase 2 completion condition: "C:/Users/Docker/Downloads/reaction.psd" exists and contains a Background image from reaction.jpg and a text layer named "anno" whose text content is exactly "reaction between acetic acid and ethanol forming water and ethyl acetate".
+
+––––––––––––––––––––––––––––––––––––––––
+Strictly follow the TASK FLOW. Complete Phase 1 first, then Phase 2, in order.
+Each phase counts 0.5 points (maximum 1.0).

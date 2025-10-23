@@ -1,0 +1,116 @@
+TASK NAME: Aromatic Hydrocarbon Property Curation and DBE/Delta_Mass Analysis (ChemDraw, Excel, RGui)
+
+TASK OVERVIEW:
+This task involves three phases. First, draw three aromatic molecules in ChemDraw (Benzene, Naphthalene, Anthracene), obtain their properties via the ChemDraw Analysis tool, and save the drawing. Second, transcribe the properties into an Excel workbook and export a CSV file. Third, use the CSV in RGui to compute DBE and Delta_Mass, then save the derived data to "C:/Users/Docker/Downloads/Results.csv".
+All steps must be followed strictly according to the **TASK FLOW** to ensure a unique, reproducible result.
+
+REQUIREMENTS:
+- ChemDraw (current active window), Excel, and RGui are already open. You don't need to start new instances.
+  Complete Phase 1 in ChemDraw; switch to the existing Excel window (via Alt+Tab or the taskbar) for Phase 2, and switch to the RGui window for Phase 3.
+- Do not append units in Excel or CSV outputs (no "Da", "g/mol", etc.); use "." as the decimal separator.
+- All results must be saved to the specified absolute paths on the local machine.
+
+OUTPUTS TO PRODUCE:
+1) C:/Users/Docker/Downloads/molecule.cdxml
+2) C:/Users/Docker/Downloads/Properties.csv
+3) C:/Users/Docker/Downloads/Results.csv
+
+––––––––––––––––––––––––––––––––––––––––
+**TASK FLOW:**
+––––––––––––––––––––––––––––––––––––––––
+PHASE 1 — ChemDraw (Draw molecule structures and Analyze)
+
+Goal: Draw the three target molecules (Benzene, Naphthalene, Anthracene), analyze each to obtain their properties, and save the drawing file to "C:/Users/Docker/Downloads/molecule.cdxml".
+
+Steps:
+1.1 In the currently open ChemDraw document, draw the three molecule structures: Benzene, Naphthalene, Anthracene. Do not overlap.
+
+1.2 For each molecule (process one at a time), perform the following sub-tasks (a)-(c):
+    (a) Select the entire structure (selection handles must enclose the whole molecule).
+    (b) Right-click and choose "Analysis > All".
+        Confirm that an analysis annotation (properties overlay) appears directly beneath the selected structure and includes at minimum:
+        - Chemical Formula
+        - Exact Mass
+        - Molecular Weight
+       These values will be transcribed into Excel in Phase 2.
+
+1.3 Save the drawing:
+    - File > Save As...
+    - Path: C:/Users/Docker/Downloads/molecule.cdxml
+    - Confirm the file contains all three structures with their analysis annotations.
+
+Phase 1 completion condition:
+"C:/Users/Docker/Downloads/molecule.cdxml" is successfully saved with the required molecule structures and their analysis annotations.
+
+––––––––––––––––––––––––––––––––––––––––
+PHASE 2 — Excel (Create Property Table)
+
+Goal: Transcribe the ChemDraw analysis values for the three molecules in Excel and export the workbook to CSV at "C:/Users/Docker/Downloads/Properties.csv".
+
+Steps:
+2.1 Switch to Excel and create a blank workbook.
+
+2.2 In the current sheet, enter exact headers on row 1:
+    A1 = "Molecule"
+    B1 = "Chemical Formula"
+    C1 = "Exact Mass"
+    D1 = "Molecular Weight"
+
+2.3 Enter the molecule names in column A:
+    A2 = "Benzene"
+    A3 = "Naphthalene"
+    A4 = "Anthracene"
+
+2.4 From ChemDraw’s Analysis annotations in Phase 1, transcribe values for each molecule into columns B–D:
+    - Column B (Chemical Formula): copy the chemical formula string exactly as displayed (e.g., C6H6, C10H8).
+    - Column C (Exact Mass): enter the numeric exact mass value exactly as displayed (no units).
+    - Column D (Molecular Weight): enter the numeric molecular weight value exactly as displayed (no units).
+
+2.5 Export the workbook as a CSV (comma-delimited):
+    - File > Save As...
+    - Navigate to directory: C:/Users/Docker/Downloads
+    - Save as type: CSV UTF-8 (Comma delimited) (*.csv)
+    - File name: Properties.csv
+
+Phase 2 completion condition:
+"C:/Users/Docker/Downloads/Properties.csv" is created successfully with the required content (headers and three rows) and values that match ChemDraw’s Analysis.
+
+––––––––––––––––––––––––––––––––––––––––
+PHASE 3 — RGui (Compute DBE and Delta_Mass)
+
+Goal: In RGui, write and execute an R script that reads the Phase 2 CSV, parses C and H counts from "Chemical Formula", computes DBE and Delta_Mass, and writes an output CSV with a fixed schema and ordering. Do not hardcode numeric results; compute them from input.
+
+Steps: In RGui, write and execute an R script that performs these actions in order:
+3.1 Read data from: "C:/Users/Docker/Downloads/Properties.csv"
+    - Treat the first row as headers.
+    - Read numeric columns as numbers.
+
+3.2 Parse C and H element counts from "Chemical Formula":
+    - The value is exactly of the form "C<number>H<number>" (e.g., "C6H6", no space).
+    - Extract:
+        C_count = integer after "C"
+        H_count = integer after "H"
+
+3.3 Compute derived descriptors for each row using the columns from 3.1 and the counts from 3.2:
+    - DBE        = C_count - (H_count / 2) + 1
+                   Output as an integer (no decimal places).
+    - Delta_Mass = ("Molecular Weight") - ("Exact Mass")
+                   Round to 4 decimal places.
+
+3.4 Build a data frame with columns in this exact order and names:
+    Molecule, Chemical Formula, C_count, H_count, DBE, Delta_Mass
+    - Preserve the row order exactly as: Benzene, Naphthalene, Anthracene.
+
+3.5 Write the resulting table to: "C:/Users/Docker/Downloads/Results.csv"
+    - Delimiter: comma.
+    - Include the header row exactly as in 3.4.
+    - No row names.
+    - No quotes around data values.
+    - Encoding: UTF-8.
+
+Phase 3 completion condition:
+"C:/Users/Docker/Downloads/Results.csv" exists and contains exactly 3 rows in the order Benzene, Naphthalene, Anthracene with the required columns and computed values as defined.
+
+––––––––––––––––––––––––––––––––––––––––
+Strictly follow the TASK FLOW. Complete Phase 1 first, then Phase 2, then Phase 3, in order.
+Phase 1 and Phase 2 each count 0.3 points; Phase 3 counts 0.4 points (maximum 1.0).
